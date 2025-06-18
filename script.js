@@ -1,10 +1,10 @@
 const wordList = [ 
 
-{ japanese: "関数型プログラミングがソフトウェア開発者の間で注目されている。", english: "Functional programming has been gaining popularity among software developers." }, 
+    { japanese: "関数型プログラミングがソフトウェア開発者の間で注目されている。", english: "Functional programming has been gaining popularity among software developers." }, 
 
-{ japanese: "走る", english: "run" }, 
+    { japanese: "走る", english: "run" }, 
 
-{ japanese: "大きい", english: "big" } 
+    { japanese: "大きい", english: "big" } 
 
 ]; 
 
@@ -12,53 +12,53 @@ const wordList = [
 
 function generateWordList() { 
 
-const container = document.getElementById("wordContainer"); 
+    const container = document.getElementById("wordContainer"); 
 
  
 
-wordList.forEach((word, index) => { 
+    wordList.forEach((word, index) => { 
 
-const block = document.createElement("div"); 
-
- 
-
-// 日本語表示 
-
-const jp = document.createElement("p"); 
-
-jp.textContent = `意味：${word.japanese}`; 
-
-block.appendChild(jp); 
+    const block = document.createElement("div"); 
 
  
 
-// 英語表示ボタン 
+    // 日本語表示 
 
-const button = document.createElement("button"); 
+    const jp = document.createElement("p"); 
 
-button.textContent = "英語を見る・聞く"; 
+    jp.textContent = `意味：${word.japanese}`; 
 
-button.onclick = () => showAnswer(index); 
-
-block.appendChild(button); 
+    block.appendChild(jp); 
 
  
 
-// 英語の表示エリア 
+    // 英語表示ボタン 
 
-const answer = document.createElement("p"); 
+    const button = document.createElement("button"); 
 
-answer.id = `answer${index}`; 
+    button.textContent = "英語を見る・聞く"; 
 
-answer.style.color = "blue"; 
+    button.onclick = () => showAnswer(index); 
 
-block.appendChild(answer); 
+    block.appendChild(button); 
 
  
 
-container.appendChild(block); 
+    // 英語の表示エリア 
 
-}); 
+    const answer = document.createElement("p"); 
+
+    answer.id = `answer${index}`; 
+
+    answer.style.color = "blue"; 
+
+    block.appendChild(answer); 
+
+ 
+
+    container.appendChild(block); 
+
+    }); 
 
 } 
 
@@ -66,28 +66,26 @@ container.appendChild(block);
 
 function showAnswer(index) { 
 
-const english = wordList[index].english; 
+    const english = wordList[index].english; 
 
-const answerElement = document.getElementById(`answer${index}`); 
+    const answerElement = document.getElementById(`answer${index}`); 
 
-answerElement.textContent = english; 
+    answerElement.textContent = english; 
 
  
 
-// 読み上げ機能 
+    // 読み上げ機能 
 
-const utterance = new SpeechSynthesisUtterance(english); 
+    const utterance = new SpeechSynthesisUtterance(english); 
 
-utterance.lang = "en-US"; // アメリカ英語の音声で読み上げ 
+    utterance.lang = "en-US"; // アメリカ英語の音声で読み上げ 
 
-utterance.rate = 1; 
+    utterance.rate = 1; 
 
-speechSynthesis.speak(utterance); 
+    speechSynthesis.speak(utterance); 
 
 } 
 
  
 
 generateWordList(); 
-
- 
